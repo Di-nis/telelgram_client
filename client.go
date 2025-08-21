@@ -57,8 +57,8 @@ type Client struct {
 	Gaps       *updates.Manager
 }
 
-func NewClient() *Client {
-	params := NewParams()
+func NewClient(phone, appHash, sessionAllDir string, appID int) *Client {
+	params := NewParams(phone, appHash, sessionAllDir, appID)
 	return &Client{
 		Params: params,
 	}
