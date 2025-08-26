@@ -117,9 +117,7 @@ func (t *Client) NoNameFunction() error {
 	return nil
 }
 
-func (t *Client) SendMessageToGroup(msg string) error {
-	n8nGroupID, _ := strconv.ParseInt(os.Getenv("N8N_GROUP_ID"), 10, 64)
-
+func (t *Client) SendMessageToGroup(chatID int64, msg string) error {
 	// Контекст для работы с API
 	ctx := context.Background()
 
@@ -132,7 +130,7 @@ func (t *Client) SendMessageToGroup(msg string) error {
 
 		// Создаём InputPeer для группы
 		inputPeer := &tg.InputPeerChat{
-			ChatID: n8nGroupID,
+			ChatID: chatID,
 		}
 
 		// Отправляем сообщение
@@ -151,7 +149,6 @@ func (t *Client) SendMessageToGroup(msg string) error {
 }
 
 func (t *Client) SendMessageToBot(username, msg string) error {
-
 	// Контекст для работы с API
 	ctx := context.Background()
 
